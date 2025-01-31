@@ -10,14 +10,14 @@ namespace ToDoList
     {
         private Dictionary<int, Task> taskList;
         private int taskIdCounter;
-        
+
         public TaskList()
         {
             taskList = new Dictionary<int, Task>();
             taskIdCounter = 1;
         }
 
-        internal void AddTask(string name, DateTime dueDate)
+        public void AddTask(string name, DateTime dueDate)
         {
             Task task = new Task(taskIdCounter, name, dueDate);
             taskList[taskIdCounter] = task;
@@ -25,20 +25,20 @@ namespace ToDoList
             Console.WriteLine("Task added successfully.");
         }
 
-        internal void DisplayTaskList()
+        public void DisplayTaskList()
         {
-            if(taskList.Count==0)
+            if (taskList.Count == 0)
             {
                 Console.WriteLine("No tasks in List");
             }
             foreach (Task task in taskList.Values)
             {
                 task.DisplayTask();
-                
+
             }
         }
 
-        internal void MarkTaskCompleted(int taskId)
+        public void MarkTaskCompleted(int taskId)
         {
             if (taskList.ContainsKey(taskId))
             {
@@ -47,11 +47,36 @@ namespace ToDoList
             }
             else
             {
-                Console.WriteLine("Invalid TaskID.");
+                Console.WriteLine("Invalid Task ID.");
             }
         }
-       
-
-
+        public void DeleteTask(int taskId)
+        {
+            if (taskList.ContainsKey(taskId))
+            {
+                taskList.Remove(taskId);
+                Console.WriteLine("Task Deleted");
+            }
+            else
+            {
+                Console.WriteLine("Invalid Task ID.");
+            }
+            
+        }
+        public void DisplayFilteredTaskList(bool status)
+        {
+            foreach(Task task in taskList.Values)
+            {
+                if (task.getisCompleted().Equals(status))
+                {
+                    task.DisplayTask();
+                }
+                else { continue; }
+            }
+        }
+        
     }
 }
+
+
+ 

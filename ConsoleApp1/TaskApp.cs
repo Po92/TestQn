@@ -39,7 +39,7 @@ namespace ToDoList
 
         public void MarkTaskCompleted()
         {
-            Console.Write("Please key in TaskId: ")
+            Console.Write("Please key in TaskId: ");
             String taskIdInput = Console.ReadLine();
             try
             {
@@ -47,11 +47,54 @@ namespace ToDoList
                 taskList.MarkTaskCompleted(taskId);
             }
             catch {
-                Console.WriteLine("Invalid Input, Please Key in valid TaskID");
+                Console.WriteLine("Invalid Input, Please Key in valid Task ID");
             }
 
             
         }
+        public void DeleteTask()
+        {
+            Console.Write("Please key in TaskId: ");
+            String taskIdInput = Console.ReadLine();
+            try
+            {
+                int taskId = int.Parse(taskIdInput);
+                taskList.DeleteTask(taskId);
+            }
+            catch
+            {
+                Console.WriteLine("Invalid Input, Please Key in valid Task ID");
+            }
+
+        }
+
+        public void FilteredTaskList()
+        {
+            int status = 0;
+            Console.Write("Press 1 for Completed Tasks, and 2 for Pending Tasks");
+            try
+            {
+                string filterinput = Console.ReadLine();
+                status = int.Parse(filterinput);
+            }
+            catch
+            {
+                Console.WriteLine("Invalid input, please key in either 1 or 2");
+            }
+            switch (status)
+            {
+                case 1:
+                    taskList.DisplayFilteredTaskList(true);
+                    break;
+                case 2:
+                    taskList.DisplayFilteredTaskList(false);
+                    break;
+                default:
+                    Console.WriteLine("Invalid Input please key in either 1 or 2");
+                    break;
+            }
+        }
+            
 
 
         public void showMenu()
@@ -63,7 +106,9 @@ namespace ToDoList
                 Console.WriteLine("1. Add Task");
                 Console.WriteLine("2. View Tasks");
                 Console.WriteLine("3. Mark Task as Completed");
-                Console.WriteLine("4. Exit");
+                Console.WriteLine("4. Delete Task");
+                Console.WriteLine("5. Filtered Task List");
+                Console.WriteLine("6. Exit");
                 Console.Write("Option: ");
 
                 string option = Console.ReadLine();
@@ -80,6 +125,12 @@ namespace ToDoList
                        MarkTaskCompleted();
                        break;
                     case "4":
+                        DeleteTask();
+                        break;
+                    case "5":
+                        FilteredTaskList();
+                        break;
+                    case "6":
                         exit = true;
                         break;
                     default:

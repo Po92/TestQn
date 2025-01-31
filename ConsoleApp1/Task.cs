@@ -13,6 +13,8 @@ namespace ToDoList
         private DateTime dueDate;
         private bool isCompleted;
 
+       
+
         public Task(int Id, string taskName, DateTime dueDate)
         {
             this.Id = Id;
@@ -21,7 +23,12 @@ namespace ToDoList
             this.isCompleted = false;
 
         }
-        
+        public bool getisCompleted()
+        {
+            return isCompleted;
+        }
+
+
         public void DisplayTask()
         {
             Console.Write("ID: " + Id + "\t");
