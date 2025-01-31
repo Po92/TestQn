@@ -28,13 +28,23 @@ namespace ToDoList
             return isCompleted;
         }
 
+        public DateTime getdueDate()
+        {
+            return dueDate;
+        }
 
         public void DisplayTask()
         {
+            if (isCompleted)
+            { Console.ForegroundColor = ConsoleColor.Green; }
+            else if (!isCompleted && dueDate.CompareTo(DateTime.Now) < 0)
+            { Console.ForegroundColor = ConsoleColor.Red; }
+
             Console.Write("ID: " + Id + "\t");
             Console.Write("Task: " + taskName + "\t");
             Console.Write("Due Date: "+dueDate.ToShortDateString()+"\t");
             Console.WriteLine("Status: "+ (isCompleted ? "Completed":"Pending")+"\t");
+            Console.ResetColor();
         }
         public void MarkComplete()
         {

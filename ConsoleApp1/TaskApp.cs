@@ -108,7 +108,8 @@ namespace ToDoList
                 Console.WriteLine("3. Mark Task as Completed");
                 Console.WriteLine("4. Delete Task");
                 Console.WriteLine("5. Filtered Task List");
-                Console.WriteLine("6. Exit");
+                Console.WriteLine("6. Overdue Task List");
+                Console.WriteLine("7. Exit");
                 Console.Write("Option: ");
 
                 string option = Console.ReadLine();
@@ -131,6 +132,9 @@ namespace ToDoList
                         FilteredTaskList();
                         break;
                     case "6":
+                        taskList.DisplayOverdueTasks();
+                        break;
+                    case "7":
                         exit = true;
                         break;
                     default:

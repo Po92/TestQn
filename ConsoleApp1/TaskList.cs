@@ -61,11 +61,11 @@ namespace ToDoList
             {
                 Console.WriteLine("Invalid Task ID.");
             }
-            
+
         }
         public void DisplayFilteredTaskList(bool status)
         {
-            foreach(Task task in taskList.Values)
+            foreach (Task task in taskList.Values)
             {
                 if (task.getisCompleted().Equals(status))
                 {
@@ -74,7 +74,17 @@ namespace ToDoList
                 else { continue; }
             }
         }
-        
+
+        public void DisplayOverdueTasks()
+        {
+            foreach (Task task in taskList.Values)
+            {
+                if (task.getdueDate().CompareTo(DateTime.Now) < 0)
+                { task.DisplayTask(); }
+                else { continue; }
+
+            }
+        }
     }
 }
 
