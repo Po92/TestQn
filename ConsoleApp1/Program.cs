@@ -15,17 +15,24 @@ class Program
         task.MarkComplete();
         task.DisplayTask();*/
 
-        TaskList tasks = new TaskList();
-        tasks.AddTask("task2", DateTime.Now);
-        tasks.DisplayTaskList();
-        tasks.AddTask("task3", DateTime.Now);
-        tasks.DisplayTaskList();
-        tasks.MarkTaskCompleted(2);
-        tasks.DisplayTaskList();
-        tasks.MarkTaskCompleted(3);
-        tasks.AddTask("task4", DateTime.Now);
-        tasks.AddTask("task5", DateTime.Now);
-        tasks.DisplayTaskList();
+        TaskList taskList = new TaskList();
+        taskList.DisplayTaskList();
+        taskList.AddTask("task2", DateTime.Now);
+        taskList.DisplayTaskList();
+        taskList.AddTask("task3 ", DateTime.Now);
+        taskList.DisplayTaskList();
+        taskList.MarkTaskCompleted(2);
+        taskList.DisplayTaskList();
+        taskList.MarkTaskCompleted(3);
+        taskList.AddTask("task4", DateTime.Now);
+        taskList.AddTask("task5", DateTime.Now);
+        taskList.DisplayTaskList();
+
+        TaskApp app = new TaskApp();
+        app.start();
+
+
+      
 
 
 

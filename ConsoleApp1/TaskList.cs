@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace ToDoList
 {
-    internal class TaskList
+    public class TaskList
     {
         private Dictionary<int, Task> taskList;
         private int taskIdCounter;
         
-        internal TaskList()
+        public TaskList()
         {
             taskList = new Dictionary<int, Task>();
             taskIdCounter = 1;
@@ -27,6 +27,10 @@ namespace ToDoList
 
         internal void DisplayTaskList()
         {
+            if(taskList.Count==0)
+            {
+                Console.WriteLine("No tasks in List");
+            }
             foreach (Task task in taskList.Values)
             {
                 task.DisplayTask();
