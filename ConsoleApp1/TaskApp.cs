@@ -14,73 +14,38 @@ namespace ToDoList
         {
             taskList = new TaskList();
         }
-        public void start()
+        public void Start()
         {
-            showMenu();
+            ShowMenu();
         }
         public void AddTask()
         {
-            Console.Write("Enter task name: ");
-            string taskName = Console.ReadLine();
-
-            DateTime dueDate;
-            while (true)
-            {
-                Console.Write("Enter due date (MM/dd/yyyy): ");
-                if (DateTime.TryParse(Console.ReadLine(), out dueDate))
-                    break;
-                else
-                    Console.WriteLine("Invalid date format. Please try again.");
-            }
-
+            Console.WriteLine("Enter task name: ");
+            string taskName = InputValidator.ReadNonEmptyString();
+            Console.WriteLine("Please Enter Due Date (MM/dd/yyyy): ");
+            DateTime dueDate = InputValidator.ReadDateTime(); 
             taskList.AddTask(taskName, dueDate);
-            Console.WriteLine("Task added successfully.");
         }
 
         public void MarkTaskCompleted()
         {
             Console.Write("Please key in TaskId: ");
-            String taskIdInput = Console.ReadLine();
-            try
-            {
-                int taskId = int.Parse(taskIdInput);
-                taskList.MarkTaskCompleted(taskId);
-            }
-            catch {
-                Console.WriteLine("Invalid Input, Please Key in valid Task ID");
-            }
 
-            
+            int taskId = InputValidator.ReadInt();
+            taskList.MarkTaskCompleted(taskId);
+            Console.WriteLine("Task" + taskId + "Completed");           
         }
         public void DeleteTask()
         {
             Console.Write("Please key in TaskId: ");
-            String taskIdInput = Console.ReadLine();
-            try
-            {
-                int taskId = int.Parse(taskIdInput);
-                taskList.DeleteTask(taskId);
-            }
-            catch
-            {
-                Console.WriteLine("Invalid Input, Please Key in valid Task ID");
-            }
-
+            int taskId = InputValidator.ReadInt();
+            taskList.DeleteTask(taskId);
         }
 
         public void FilteredTaskList()
         {
-            int status = 0;
-            Console.Write("Press 1 for Completed Tasks, and 2 for Pending Tasks");
-            try
-            {
-                string filterinput = Console.ReadLine();
-                status = int.Parse(filterinput);
-            }
-            catch
-            {
-                Console.WriteLine("Invalid input, please key in either 1 or 2");
-            }
+            Console.Write("Press 1 for Completed Tasks, and 2 for Pending Tasks: ");
+            int status = InputValidator.ReadInt();
             switch (status)
             {
                 case 1:
@@ -97,7 +62,7 @@ namespace ToDoList
             
 
 
-        public void showMenu()
+        public void ShowMenu()
         {
             bool exit = false;
             while (!exit)
@@ -114,35 +79,34 @@ namespace ToDoList
                 Console.WriteLine("9. Exit");
                 Console.Write("Option: ");
 
-                string option = Console.ReadLine();
-                
+                int option = InputValidator.ReadInt();
                 switch (option)
                 {
-                    case "1":
+                    case 1:
                         AddTask();
                         break;
-                    case "2":
+                    case 2:
                         taskList.DisplayTaskList();
                         break;
-                    case "3":
+                    case 3:
                         MarkTaskCompleted();
                         break;
-                    case "4":
+                    case 4:
                         DeleteTask();
                         break;
-                    case "5":
+                    case 5:
                         FilteredTaskList();
                         break;
-                    case "6":
+                    case 6:
                         taskList.DisplayOverdueTasks();
                         break;
-                    case "7":
+                    case 7:
                         taskList.DisplayTaskDateSorted();
                         break;
-                    case "8":
+                    case 8:
                         taskList.DisplayTaskStatusSorted();
                         break;
-                    case "9":
+                    case 9:
                         exit = true;
                         break;
                     default:

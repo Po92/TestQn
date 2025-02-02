@@ -23,12 +23,12 @@ namespace ToDoList
             this.isCompleted = false;
 
         }
-        public bool getisCompleted()
+        public bool GetisCompleted()
         {
             return isCompleted;
         }
 
-        public DateTime getdueDate()
+        public DateTime GetdueDate()
         {
             return dueDate;
         }

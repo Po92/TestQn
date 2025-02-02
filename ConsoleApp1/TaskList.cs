@@ -13,13 +13,13 @@ namespace ToDoList
 
         public TaskList()
         {
-            taskList = new Dictionary<int, ToDoTask>();
+            taskList = [];
             taskIdCounter = 1;
         }
 
         public void AddTask(string name, DateTime dueDate)
         {
-            ToDoTask task = new ToDoTask(taskIdCounter, name, dueDate);
+            ToDoTask task = new(taskIdCounter, name, dueDate);
             taskList[taskIdCounter] = task;
             taskIdCounter++;
             Console.WriteLine("Task added successfully.");
@@ -47,7 +47,7 @@ namespace ToDoList
             }
             else
             {
-                Console.WriteLine("Invalid Task ID.");
+                Console.WriteLine("Task ID does not Exist.");
             }
         }
         public void DeleteTask(int taskId)
@@ -59,7 +59,7 @@ namespace ToDoList
             }
             else
             {
-                Console.WriteLine("Invalid Task ID.");
+                Console.WriteLine("Task ID does not Exist.");
             }
 
         }
@@ -67,7 +67,7 @@ namespace ToDoList
         {
             foreach (ToDoTask task in taskList.Values)
             {
-                if (task.getisCompleted().Equals(status))
+                if (task.GetisCompleted().Equals(status))
                 {
                     task.DisplayTask();
                 }
@@ -79,7 +79,7 @@ namespace ToDoList
         {
             foreach (ToDoTask task in taskList.Values)
             {
-                if (task.getdueDate().CompareTo(DateTime.Now) < 0)
+                if (task.GetdueDate().CompareTo(DateTime.Now) < 0)
                 { task.DisplayTask(); }
                 else { continue; }
 
@@ -87,7 +87,7 @@ namespace ToDoList
         }
         public void DisplayTaskDateSorted()
         {
-            var sortedTaskList = taskList.OrderBy(kvp => kvp.Value.getdueDate());
+            var sortedTaskList = taskList.OrderBy(kvp => kvp.Value.GetdueDate());
             foreach (var kvp in sortedTaskList)
             {
                 kvp.Value.DisplayTask();
@@ -95,7 +95,7 @@ namespace ToDoList
         }
         public void DisplayTaskStatusSorted()
         {
-            var sortedTaskList = taskList.OrderBy(kvp => kvp.Value.getisCompleted());
+            var sortedTaskList = taskList.OrderBy(kvp => kvp.Value.GetisCompleted());
             foreach (var kvp in sortedTaskList)
             {
                 kvp.Value.DisplayTask();
