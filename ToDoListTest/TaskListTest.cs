@@ -43,6 +43,7 @@ namespace ToDoListTest
             // Assert ensure task is marked as completed
             Assert.True(taskList.GetTask(1).GetisCompleted());
             Assert.False(taskList.GetTask(2).GetisCompleted());
+
         }
         [Fact]
         public void DeleteTask_TaskIsDeleted()

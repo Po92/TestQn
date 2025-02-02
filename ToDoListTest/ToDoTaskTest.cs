@@ -43,19 +43,25 @@ namespace ToDoListTest
         public void DisplayTask_ShouldDisplayCorrectTaskDetails()
         {
             // Arrange
-            DateTime testDate = new DateTime(2025, 2, 2);
-            ToDoTask task = new ToDoTask(1, "Test Task", testDate);
+            
+            DateTime disptestDate = new DateTime(2025, 2, 2);
+            int taskId = 1;
+            ToDoTask disptask = new ToDoTask(taskId, "Test Task", disptestDate);
             // Act Direct output to a string
             using var sw = new System.IO.StringWriter();
+            
             Console.SetOut(sw);
-            task.DisplayTask();
+            
+            disptask.DisplayTask();
             string output = sw.ToString();
 
             // Assert: Check if the output contains expected task details
-            Assert.Contains("ID: 1", output);
+            Assert.Contains($"ID: {taskId}", output);
             Assert.Contains("Task: Test Task", output);
-            Assert.Contains("Due Date: " + testDate.ToShortDateString(), output);
-            Assert.Contains("Status: Pending", output); 
+            Assert.Contains("Due Date: " + disptestDate.ToShortDateString(), output);
+            Assert.Contains("Status: Pending", output);
+
+
         }
     }
 }

@@ -2,10 +2,11 @@
 using Xunit;
 using ToDoList;
 
-namespace ToDoListTests
+namespace ToDoListTest
 {
-    public class InputValidatorTests
+    public class InputValidatorTest
     {
+       
         [Fact]
         public void ReadNonEmptyString_ShouldReturnValidInput()
         {
@@ -21,10 +22,13 @@ namespace ToDoListTests
 
             // Act Test input validator with simulated input
             var result = InputValidator.ReadNonEmptyString();
+            
 
             // Assert check results
             Assert.Equal(input, result);
             Assert.Contains("Invalid Input.Please try again: ", sw.ToString());
+            
+
         }
 
         [Fact]
@@ -45,9 +49,11 @@ namespace ToDoListTests
             // Act
             DateTime result = InputValidator.ReadDateTime();
 
+
             // Assert
             Assert.Equal(DateTime.Parse(input), result); // Verify that the result matches the expected date.
             Assert.Contains("Invalid date format. Please try again using format MM/dd/yyyy: ", sw.ToString());
+            
         }
 
         [Fact]
