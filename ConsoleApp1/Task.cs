@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ToDoList
 {
-    public class Task
+    public class ToDoTask
     {
         private int Id;
         private string taskName;
@@ -15,7 +15,7 @@ namespace ToDoList
 
        
 
-        public Task(int Id, string taskName, DateTime dueDate)
+        public ToDoTask(int Id, string taskName, DateTime dueDate)
         {
             this.Id = Id;
             this.taskName = taskName;

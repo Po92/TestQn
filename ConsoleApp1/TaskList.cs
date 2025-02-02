@@ -8,18 +8,18 @@ namespace ToDoList
 {
     public class TaskList
     {
-        private Dictionary<int, Task> taskList;
+        private Dictionary<int, ToDoTask> taskList;
         private int taskIdCounter;
 
         public TaskList()
         {
-            taskList = new Dictionary<int, Task>();
+            taskList = new Dictionary<int, ToDoTask>();
             taskIdCounter = 1;
         }
 
         public void AddTask(string name, DateTime dueDate)
         {
-            Task task = new Task(taskIdCounter, name, dueDate);
+            ToDoTask task = new ToDoTask(taskIdCounter, name, dueDate);
             taskList[taskIdCounter] = task;
             taskIdCounter++;
             Console.WriteLine("Task added successfully.");
@@ -31,7 +31,7 @@ namespace ToDoList
             {
                 Console.WriteLine("No tasks in List");
             }
-            foreach (Task task in taskList.Values)
+            foreach (ToDoTask task in taskList.Values)
             {
                 task.DisplayTask();
 
@@ -65,7 +65,7 @@ namespace ToDoList
         }
         public void DisplayFilteredTaskList(bool status)
         {
-            foreach (Task task in taskList.Values)
+            foreach (ToDoTask task in taskList.Values)
             {
                 if (task.getisCompleted().Equals(status))
                 {
@@ -77,7 +77,7 @@ namespace ToDoList
 
         public void DisplayOverdueTasks()
         {
-            foreach (Task task in taskList.Values)
+            foreach (ToDoTask task in taskList.Values)
             {
                 if (task.getdueDate().CompareTo(DateTime.Now) < 0)
                 { task.DisplayTask(); }
