@@ -85,6 +85,22 @@ namespace ToDoList
 
             }
         }
+        public void DisplayTaskDateSorted()
+        {
+            var sortedTaskList = taskList.OrderBy(kvp => kvp.Value.getdueDate());
+            foreach (var kvp in sortedTaskList)
+            {
+                kvp.Value.DisplayTask();
+            }
+        }
+        public void DisplayTaskStatusSorted()
+        {
+            var sortedTaskList = taskList.OrderBy(kvp => kvp.Value.getisCompleted());
+            foreach (var kvp in sortedTaskList)
+            {
+                kvp.Value.DisplayTask();
+            }
+        }
     }
 }
 
