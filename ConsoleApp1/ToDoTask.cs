@@ -8,13 +8,13 @@ namespace ToDoList
 {
     public class ToDoTask
     {
-        private int Id;
+        private readonly int Id;
         private string taskName;
         private DateTime dueDate;
         private bool isCompleted;
 
        
-
+        //Initializes a new instance of the ToDoTask class
         public ToDoTask(int Id, string taskName, DateTime dueDate)
         {
             this.Id = Id;
@@ -22,6 +22,15 @@ namespace ToDoList
             this.dueDate = dueDate;
             this.isCompleted = false;
 
+        }
+        //Getters and Setters
+        public string GetTaskName()
+        {
+            return taskName;
+        }
+        public int GetId()
+        {
+            return Id;
         }
         public bool GetisCompleted()
         {
@@ -33,6 +42,21 @@ namespace ToDoList
             return dueDate;
         }
 
+        public void SetTaskName(string taskName)
+        {
+            this.taskName = taskName;
+        }
+
+        public void SetDueDate(DateTime dueDate)
+        {
+            this.dueDate = dueDate;
+        }
+        public void SetIsCompleted(bool isCompleted)
+        {
+            this.isCompleted = isCompleted;
+        }
+
+        //Display Task
         public void DisplayTask()
         {
             if (isCompleted)
@@ -46,6 +70,7 @@ namespace ToDoList
             Console.WriteLine("Status: "+ (isCompleted ? "Completed":"Pending")+"\t");
             Console.ResetColor();
         }
+        //Change status of task to completed
         public void MarkComplete()
         {
             this.isCompleted = true;

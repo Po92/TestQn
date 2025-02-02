@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ToDoList
 {
+    //Constructor
     public class TaskApp
     {
         private TaskList taskList;
@@ -14,10 +15,12 @@ namespace ToDoList
         {
             taskList = new TaskList();
         }
+        //Start the application
         public void Start()
         {
             ShowMenu();
         }
+        //Validation for add task, and adding task to list
         public void AddTask()
         {
             Console.WriteLine("Enter task name: ");
@@ -26,7 +29,7 @@ namespace ToDoList
             DateTime dueDate = InputValidator.ReadDateTime(); 
             taskList.AddTask(taskName, dueDate);
         }
-
+        //Mark task as completed
         public void MarkTaskCompleted()
         {
             Console.Write("Please key in TaskId: ");
@@ -35,13 +38,14 @@ namespace ToDoList
             taskList.MarkTaskCompleted(taskId);
             Console.WriteLine("Task" + taskId + "Completed");           
         }
+        //Delete Task
         public void DeleteTask()
         {
             Console.Write("Please key in TaskId: ");
             int taskId = InputValidator.ReadInt();
             taskList.DeleteTask(taskId);
         }
-
+        //Filter task List
         public void FilteredTaskList()
         {
             Console.Write("Press 1 for Completed Tasks, and 2 for Pending Tasks: ");
@@ -61,7 +65,7 @@ namespace ToDoList
         }
             
 
-
+        //Show instructions and await for user input
         public void ShowMenu()
         {
             bool exit = false;

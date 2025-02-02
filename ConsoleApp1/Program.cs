@@ -6,7 +6,8 @@ class Program
 {
     public static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+      
+        Console.WriteLine("Starting up Application To Do List");
 
         TaskApp app = new();
         app.Start();
